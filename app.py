@@ -4,6 +4,8 @@ import joblib
 import pandas as pd
 from pathlib import Path
 
+from dashboard_page import render_dashboard
+
 # Page configuration
 st.set_page_config(
     page_title="Predictive Maintenance System",
@@ -37,13 +39,7 @@ page = st.sidebar.radio(
 )
 
 if page == "Dashboard":
-    st.header("Dashboard Overview")
-    st.info("Dashboard analytics will be developed by the team.")
-
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Dataset Records", "10,000")
-    col2.metric("Selected Model", "Random Forest")
-    col3.metric("Decision Threshold", f"{threshold:.4f}")
+    render_dashboard(threshold)
 
 elif page == "Machine Failure Prediction":
     st.header("Machine Failure Prediction")
